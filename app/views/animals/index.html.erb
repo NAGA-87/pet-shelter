@@ -1,0 +1,181 @@
+<%= render "shared/header" %>
+<div class='main'>
+
+  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
+  <div class='title-contents'>
+    <h2 class='service-title'>
+      里親探しをされている方と<br> 飼い主になりたい方をつなぐ
+    </h2>
+    <p class='service-explain'>
+      私たちはいつでも里親を募集しています。
+    </p>
+    <p class='service-explain'>
+      1日も早く、家族としてお迎えください。
+    </p>
+    
+  </div>
+  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+
+  <%# FURIMAが選ばれる3つの理由部分 %>
+  <div class='select-reason-contents'>
+    <h2 class='title'>
+      里親になるために
+    </h2>
+    <ul class='reason-lists'>
+      <li class='list'>
+        <%= image_tag "photo1.jpg", class:"list-pict" %>
+        <span class='reason-list-number'>1</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>里親</span>
+          になることをご検討ください。
+        </h3>
+        <p class='reason-list-description'>
+          ペットショップでご購入される前に
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "photo3.jpg", class:"list-pict" %>
+        <span class='reason-list-number'>2</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>約10万頭</span>
+          の犬や猫
+        </h3>
+        <p class='reason-list-description'>
+          全国で年間に殺処分されています
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "photo2.jpg", class:"list-pict" %>
+        <span class='reason-list-number'>3</span>
+        <h3 class='reason-list-text'>
+          条件に合致した際
+          <span class='reason-list-blue-text'>即通知</span>
+        </h3>
+        <p class='reason-list-description'>
+          条件に見合ったペットをご紹介いたします
+        </p>
+      </li>
+    </ul>
+  </div>
+  <%# /FURIMAが選ばれる3つの理由部分 %>
+
+  <%# 画面中央の「会員数日本一位」帯部分 %>
+  <div class='ad-contents'>
+    <h2 class='ad-title'>
+      様々な理由でペットを飼えなくなった方
+    </h2>
+    <p class='ad-explain'>
+      保健所へ相談する前に、お考えください
+    </p>
+    <p class='ad-explain'>
+      あなたのペットが助かるかもしれません！
+    </p>
+    <p class='ad-explain'>
+      受付は日本全国！まずはご相談ください
+    </p>
+  </div>
+  <%# /画面中央の「会員数日本一位」帯部分 %>
+
+  <%# FURIMAの特徴 %>
+  <div class='feature-contents'>
+    <h2 class='title'>
+      里親を募集するには
+    </h2>
+    <ul class='feature-lists'>
+      <li class='list'>
+        <%= image_tag "photo05.jpg", class:"list-pict" %>
+        <h3 class='feature-list-text'>
+          保健所へ連れて行く前に
+        </h3>
+        <p class='feature-list-description'>
+          保健所へ連れて行くと、３日の保護期間後、殺処分となります！
+        </p>
+      </li>
+      <li class='list'>
+        <h3 class='feature-list-text'>
+          ペットの引き渡しは、手渡しのみ
+        </h3>
+        <%= image_tag "photo06.jpg", class:"list-pict" %>
+        <p class='feature-list-description'>
+          不妊手術を受けさせる事を約束して頂ける里親とお話しください
+        </p>
+      </li>
+      <li class='list'>
+        
+        <h3 class='feature-list-text'>
+          譲渡制約書を交わさないペットの譲渡は、動物虐待です！
+        </h3>
+        <p class='feature-list-description'>
+          誓約書の取り交わしを完了してからペットを譲渡して下さい。
+        </p>
+        <%= image_tag "photo04.jpg", class:"list-pict" %>
+      </li>
+    </ul>
+  </div>
+  <%# /FURIMAの特徴 %>
+
+  <%# 商品一覧 %>
+  <div class='item-contents'>
+    <h2 class='title'>ピックアップカテゴリー</h2>
+    <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+    <ul class='item-lists'>
+
+      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      <li class='list'>
+        <%= link_to "#" do %>
+        <div class='item-img-content'>
+          <%= image_tag "item-sample.png", class: "item-img" %>
+
+          <%# 商品が売れていればsold outを表示しましょう %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <%# //商品が売れていればsold outを表示しましょう %>
+
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= "商品名" %>
+          </h3>
+          <div class='item-price'>
+            <span><%= "販売価格" %>円<br><%= '配送料負担' %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+
+      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+      <%# 商品がある場合は表示されないようにしましょう %>
+      <li class='list'>
+        <%= link_to '#' do %>
+        <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            商品を出品してね！
+          </h3>
+          <div class='item-price'>
+            <span>99999999円<br>(税込み)</span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <%# //商品がある場合は表示されないようにしましょう %>
+      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+    </ul>
+  </div>
+  <%# /商品一覧 %>
+</div>
+<%= link_to('#', class: 'purchase-btn') do %>
+  <span class='purchase-btn-text'>里親を探す</span>
+  <%= image_tag 'logo.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+<% end %>
+<%= render "shared/footer" %>
