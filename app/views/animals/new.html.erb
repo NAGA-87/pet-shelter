@@ -21,101 +21,81 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :hoge, id:"item-image" %>
+        <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
     <%# /ペット画像 %>
     <%# ペット名と現在所在地 %>
-    <div class="new-animals">
+    <div class="new-items">
       <div class="weight-bold-text">
         ペットの名前
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :hoge, class:"animals-text", id:"animal-name", placeholder:"ペット名（必須 10文字まで)", maxlength:"10" %>
-      <div class="items-explain">
+      <%= f.text_area :animal_name, class:"items-text", id:"animal-name", placeholder:"ペット名（必須 10文字まで)", maxlength:"10" %>
+      <div class="animals-location">
         <div class="weight-bold-text">
           現在所在地
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :hoge, class:"animals-text", id:"current-location", placeholder:"現在所在地（必須）" %>
+        <%= f.text_area :current_location, class:"items-text", id:"current-location", placeholder:"例）世田谷区内（必須）" %>
       </div>
     </div>
     <%# /ペット名と現在所在地 %>
 
     <%# ペットの年齢 %>
-    <div class="animals-age">
-      <div class="weight-bold-text">年齢</div>
+    <div class="items-detail">
       <div class="form">
         <div class="weight-bold-text">
-          カテゴリー
+          年齢
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-category"}) %>
+          <%= f.text_area :animal_age, class:"items-text", id:"animal_age", placeholder:"例）5才・不明（必須）" %>
         <div class="weight-bold-text">
-          商品の状態
+          犬(猫)の種類
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-sales-status"}) %>
+        <%= f.text_area :type, class:"items-text", id:"type", placeholder:"例）チワワ（必須）" %>
       </div>
+      
     </div>
     <%# /商品の詳細 %>
 
-    <%# 配送について %>
+    <%# ペットについて %>
     <div class="items-detail">
-      <div class="weight-bold-text question-text">
-        <span>配送について</span>
-        <a class="question" href="#">?</a>
-      </div>
       <div class="form">
         <div class="weight-bold-text">
-          配送料の負担
+          性別(♂ ♀)
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+        <%= f.collection_select(:male_female_id, MaleFemale.all, :id, :name, {}, {class:"select-box", id:"animal-male-female"}) %>
         <div class="weight-bold-text">
-          発送元の地域
+          ワクチン接種
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-prefecture"}) %>
+        <%= f.collection_select(:vaccine_id, Vaccine.all, :id, :name, {}, {class:"select-box", id:"vaccine-status"}) %>
         <div class="weight-bold-text">
-          発送までの日数
+          保護に至るまでの背景
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+        <%= f.text_area :background, class:"items-text", id:"animal-background", placeholder:"保護するまでの説明（必須 1,000文字まで）" ,rows:"7" ,maxlength:"1000" %>
+        <div class="weight-bold-text">
+          性格
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :personality, class:"items-text", id:"animal-personality", placeholder:"例）活発・大人しい（必須）" %>
+        <div class="weight-bold-text">
+          健康状態
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :health, class:"items-text", id:"animal-health", placeholder:"例）良好・持病あり（必須）" %>
+        <div class="weight-bold-text">
+          譲渡方法
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :transfer_method, class:"items-text", id:"animal-transfer_method", placeholder:"例）直接譲渡（必須）" %>
       </div>
     </div>
-    <%# /配送について %>
-
-    <%# 販売価格 %>
-    <div class="sell-price">
-      <div class="weight-bold-text question-text">
-        <span>販売価格<br>(¥300〜9,999,999)</span>
-        <a class="question" href="#">?</a>
-      </div>
-      <div>
-        <div class="price-content">
-          <div class="price-text">
-            <span>価格</span>
-            <span class="indispensable">必須</span>
-          </div>
-          <span class="sell-yen">¥</span>
-          <%= f.text_field :hoge, class:"price-input", id:"item-price", placeholder:"例）300" %>
-        </div>
-        <div class="price-content">
-          <span>販売手数料 (10%)</span>
-          <span>
-            <span id='add-tax-price'></span>円
-          </span>
-        </div>
-        <div class="price-content">
-          <span>販売利益</span>
-          <span>
-            <span id='profit'></span>円
-        </div>
-        </span>
-      </div>
-    </div>
-    <%# /販売価格 %>
+    <%# /ペットについて %>
 
     <%# 注意書き %>
     <div class="caution">
@@ -146,12 +126,7 @@
   <% end %>
 
   <footer class="items-sell-footer">
-    <ul class="menu">
-      <li><a href="#">プライバシーポリシー</a></li>
-      <li><a href="#">フリマ利用規約</a></li>
-      <li><a href="#">特定商取引に関する表記</a></li>
-    </ul>
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <%= link_to image_tag('headlogo2.png' , size: '185x50'), "/" %>
     <p class="inc">
       ©︎Pet-Shelter,Inc.
     </p>
