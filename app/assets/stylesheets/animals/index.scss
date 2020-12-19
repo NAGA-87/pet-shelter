@@ -50,6 +50,7 @@ a {
 /* FURIMAが選ばれる3つの理由部分 */
 .select-reason-contents {
   padding: 5vh 15vw;
+  background-color: rgb(241, 222, 170);
 }
 
 .select-reason-contents>.title {
@@ -64,7 +65,7 @@ a {
   content: '';
   width: 70px;
   height: 4px;
-  background-color: #3ccace;
+  background-color: #e0d312;
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -99,7 +100,7 @@ a {
   font-size: 30px;
   text-align: center;
   line-height: 60px;
-  background-color: #3ccace;
+  background-color: #e0d312;
   color: #fff;
 }
 
@@ -110,7 +111,7 @@ a {
 }
 
 .reason-list-blue-text {
-  color: #3ccace;
+  color: #e0d312;
 }
 
 .reason-list-description {

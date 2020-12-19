@@ -24,8 +24,8 @@
 | current_location    | string     | null: false                    |
 | animal_age          | integer    | null: false                    |
 | type                | string     | null: false                    |
-| male_female         | integer    | null: false                    |
-| vaccine             | integer    | null: false                    |
+| male_female_id      | integer    | null: false                    |
+| vaccine_id          | integer    | null: false                    |
 | background          | text       | null: false                    |
 | personality         | string     | null: false                    |
 | health              | string     | null: false                    |

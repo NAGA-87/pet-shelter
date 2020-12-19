@@ -1,14 +1,14 @@
 <div class="items-sell-contents">
   <header class="items-sell-header">
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <%= link_to image_tag('headlogo2.png' , size: '185x50'), "/" %>
 
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">ペットの情報を入力</h2>
-    <%= form_with local: true do |f| %>
+    <%= form_with model: @animal, url: animals_path, local: true do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# ペット画像 %>
@@ -153,7 +153,7 @@
     </ul>
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
     <p class="inc">
-      ©︎Furima,Inc.
+      ©︎Pet-Shelter,Inc.
     </p>
   </footer>
 </div>
