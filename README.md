@@ -22,7 +22,7 @@
 | ------------------- | ---------- | ------------------------------ |
 | animal_name         | string     | null: false                    |
 | current_location    | string     | null: false                    |
-| animal_age          | integer    | null: false                    |
+| animal_age          | string     | null: false                    |
 | type                | string     | null: false                    |
 | male_female_id      | integer    | null: false                    |
 | vaccine_id          | integer    | null: false                    |
@@ -30,6 +30,7 @@
 | personality         | string     | null: false                    |
 | health              | string     | null: false                    |
 | transfer_method     | string     | null: false                    |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 

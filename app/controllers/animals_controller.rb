@@ -15,4 +15,10 @@ class AnimalsController < ApplicationController
       render :new
     end
   end
+
+  private
+
+  def animal_params
+    params.require(:animal).permit(:animal_name, :current_location, :animal_age, :type, :male_female_id, :vaccine_id, :background, :personality, :health, :transfer_method, :image).merge(user_id: current_user.id)
+  end
 end
