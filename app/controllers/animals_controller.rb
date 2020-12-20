@@ -1,6 +1,8 @@
 class AnimalsController < ApplicationController
+
   def index
-    @animals = Animal.all.order('created_at DESC')
+    # @animals = Animal.all.order('created_at DESC')
+    @animals = Animal.order(created_at: :desc).page(params[:page]).per(2)
   end
 
   def new
@@ -13,6 +15,14 @@ class AnimalsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def update
+    if @animal.update(animal_params)
+      redirect_to animal_path
+    else
+      render :edit
     end
   end
 
