@@ -33,19 +33,19 @@
   object-fit: contain;
 }
 
-.item-price-box {
+.item-age-box {
   margin: 25px 0px;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.item-price-box>.item-price {
+.item-age-box>.item-age {
   font-size: 4vh;
   font-weight: bold;
 }
 
-.item-price-box>.item-postage {
+.item-age-box>.item-postage {
   font-size: 16px;
 }
 

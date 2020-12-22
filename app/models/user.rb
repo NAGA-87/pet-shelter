@@ -23,6 +23,6 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   # アソシエーション
-  # has_many :animals
+  has_many :animals
   # has_many :records
 end
