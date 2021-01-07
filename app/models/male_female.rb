@@ -4,4 +4,8 @@ class MaleFemale < ActiveHash::Base
     { id: 2, name: 'オス' },
     { id: 3, name: 'メス' }
   ]
+
+  include ActiveHash::Associations
+  has_many :animals
+
 end

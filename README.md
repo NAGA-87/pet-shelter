@@ -64,4 +64,3 @@
 - belongs_to :user
 - belongs_to :animal
 - has_one    :parents_info
-

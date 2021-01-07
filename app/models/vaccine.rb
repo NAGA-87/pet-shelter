@@ -4,4 +4,7 @@ class Vaccine < ActiveHash::Base
     { id: 2, name: '接種済' },
     { id: 3, name: '未接種' }
   ]
+
+  include ActiveHash::Associations
+  has_many :animals
 end
