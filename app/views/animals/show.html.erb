@@ -9,9 +9,11 @@
     <div class='item-img-content'>
       <%= image_tag @animal.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <div class='sold-out'>
-        <span>Sold Out!!</span>
-      </div>
+      <% if @animal.order != nil %>
+        <div class='sold-out'>
+          <span>里親決定!</span>
+        </div>
+      <% end %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
     <div class="item-age-box">
@@ -25,88 +27,92 @@
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
     <% if user_signed_in? %>
-      <% if current_user.id == @animal.user.id %>
+      <% if current_user.id == @animal.user.id && @animal.order == nil %>
         <%= link_to 'ペット情報の編集', edit_animal_path, method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
         <%= link_to '削除', animal_path(@animal.id), method: :delete, class:'item-destroy' %>
+      <% else %>
+        <% if @animal.order == nil %>
+          <%# 商品が売れていない場合はこちらを表示しましょう %>
+          <%= link_to 'ペット引取画面に進む', animal_orders_path(@animal.id) ,class:"item-red-btn"%>
+        <% end %>
       <% end %>
-      <%# 商品が売れていない場合はこちらを表示しましょう %>
-      <%= link_to 'ペット引取画面に進む', "#" ,class:"item-red-btn"%>
-      <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% end %>
 
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= "ペット説明" %></span>
     </div>
     <table class="detail-table">
       <tbody>
         <tr>
-          <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= "出品者名" %></td>
+          <th class="detail-item">ペットの名前</th>
+          <td class="detail-value"><%= @animal.animal_name %></td>
         </tr>
         <tr>
-          <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= "カテゴリー名" %></td>
+          <th class="detail-item">現在所在地</th>
+          <td class="detail-value"><%= @animal.current_location %></td>
         </tr>
         <tr>
-          <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= "商品の状態" %></td>
+          <th class="detail-item">年齢</th>
+          <td class="detail-value"><%= @animal.animal_age %></td>
         </tr>
         <tr>
-          <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= "発送料の負担" %></td>
+          <th class="detail-item">犬（猫）の種類</th>
+          <td class="detail-value"><%= @animal.type %></td>
         </tr>
         <tr>
-          <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= "発送元の地域" %></td>
+          <th class="detail-item">性別</th>
+          <td class="detail-value"><%= @animal.male_female.name %></td>
         </tr>
         <tr>
-          <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= "発送日の目安" %></td>
+          <th class="detail-item">ワクチン接種</th>
+          <td class="detail-value"><%= @animal.vaccine.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">保護に至るまでの背景</th>
+          <td class="detail-value"><%= @animal.background %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">性格</th>
+          <td class="detail-value"><%= @animal.personality %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">健康状態</th>
+          <td class="detail-value"><%= @animal.health %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">譲渡方法</th>
+          <td class="detail-value"><%= @animal.transfer_method %></td>
         </tr>
       </tbody>
     </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
-      </div>
-      <div class="report-btn">
-        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な商品の通報</span>
-      </div>
-    </div>
-  </div>
   <%# /商品の概要 %>
 
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
+    <% if user_signed_in? %>
+      <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
+      <%= form_with(model: [@animal, @comment], local: true) do |f| %>
+        <div class = "field">
+          <%= f.label :text, "質問・コメント" %><br/>
+          <%= f.text_field :text %>
+        </div>
+        <div class = "actions">
+          <%= f.submit "送信する", class: :form_btn%>
+        </div>
+      <% end %>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <li class="comments_list">
+            <%= comment.text %>
+            <%= link_to comment.user.nickname, "/users/#{comment.user_id}", class: :comment_user %>
+          </li>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
-  <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
-  </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href=“#” class=‘another-item’><%= "商品のカテゴリー名" %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
 <%= render "shared/footer" %>

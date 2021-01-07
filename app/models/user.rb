@@ -22,7 +22,14 @@ class User < ApplicationRecord
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[\w-]+\z/i, message: 'Include both letters and numbers' }
   validates :password, presence: true
 
+  # ゲストログインのため
+  def self.guest
+    find_or_create_by!(nickname: 'ゲスト', last_name: 'ゲスト', first_name: 'ゲスト', last_name_kana:'ゲスト', first_name_kana: 'ゲスト', user_birthday: '1930-01-01', email:'guest@guest.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   # アソシエーション
   has_many :animals
-  # has_many :records
+  has_many :comments, dependent: :destroy
 end
