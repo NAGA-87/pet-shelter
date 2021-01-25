@@ -81,6 +81,9 @@
 
 .user-nickname {
   text-decoration: none;
+  border: 1px black solid;
+  border-radius: 3px;
+  padding: 0.4em 1.6em;
   margin-right: 3vw;
   color: #333333;
   font-weight: bold;
@@ -89,11 +92,17 @@
 
 .logout {
   text-decoration: none;
+  border: 1px black solid;
+  border-radius: 3px;
+  padding: 0.4em 1.6em;
   color: #333333;
 }
 
 .login {
   text-decoration: none;
+  border: 1px black solid;
+  border-radius: 3px;
+  padding: 0.4em 1.6em;
   line-height: 32px;
   margin-right: 3vw;
   color: #333333;
@@ -101,6 +110,9 @@
 
 .sign-up {
   text-decoration: none;
+  border: 1px black solid;
+  border-radius: 3px;
+  padding: 0.4em 1.6em;
   margin-right: 3vw;
   color: #333333;
 }
