@@ -14,14 +14,14 @@ https://pet-shelter1.herokuapp.com/
 
 # テスト用アカウント
 **ユーザー1**
-- name: サンプル1
-- email: sample1@sample.com
-- password: sample1
-
-**ユーザー2**
 - name: テスト1
 - email: test1@test.com
 - password: testtest1
+
+**ユーザー2**
+- name: テスト2
+- email: test2@test.com
+- password: testtest2
 
 **ゲストログイン**
 - 「ゲストログイン」ボタン押下。全ての操作可能。
