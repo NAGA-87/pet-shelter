@@ -17,6 +17,10 @@
 # 🌐 URL
 https://pet-shelter1.herokuapp.com/
 
+# ログイン認証
+**ユーザー名:admin**
+**パスワード：2222**
+
 # テスト用アカウント
 **ユーザー1**
 - name: テスト1
